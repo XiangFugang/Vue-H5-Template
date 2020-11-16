@@ -1,15 +1,5 @@
 # vue-h5-template
 
-基于 vue-cli4.0 + webpack 4 + vant ui + sass+ rem 适配方案+axios 封装，构建手机端模板脚手架
-
-掘金: [vue-cli4 vant rem 移动端框架方案](https://juejin.im/post/5cfefc73f265da1bba58f9f7)
-
-[查看 demo](https://solui.cn/vue-h5-template/#/) 建议手机端查看
-
-<p>
-  <img src="./static/demo.png" width="320" style="display:inline;">
-</p>
-
 ### Node 版本要求
 
 `Vue CLI` 需要 Node.js 8.9 或更高版本 (推荐 8.11.0+)。你可以使用 [nvm](https://github.com/nvm-sh/nvm) 或
@@ -21,13 +11,17 @@
 
 ```bash
 
-git clone https://github.com/sunniejs/vue-h5-template.git
+// 安装依赖
+npm i
 
-cd vue-h5-template
-
-npm install
-
+// 启动本地
 npm run serve
+
+// 打包测试
+npm run stage
+
+// 打包正式服
+npm run build
 ```
 
 <span id="top">目录</span>
@@ -596,32 +590,46 @@ export default service
 - `hideloading` 默认 `false`,设置为 `true` 后，不显示 loading ui 交互中有些接口不需要让用户感知
 
 ```javascript
-import qs from 'qs'
+// 在src下的api文件夹的index.js文件夹中引入
+export * from './user'
+// import qs from 'qs'
 // axios
-import request from '@/utils/request'
+import { $post } from '@/utils/request'
 //user api
 
 // 用户信息
-export function getUserInfo(params) {
-  return request({
-    url: '/user/userinfo',
-    method: 'post',
-    data: qs.stringify(params),
-    hideloading: true // 隐藏 loading 组件
-  })
-}
+// export function getUserInfo(params) {
+//   return request({
+//     url: '/user/userinfo',
+//     method: 'post',
+//     data: qs.stringify(params),
+//     hideloading: true // 隐藏 loading 组件
+//   })
+// }
+export const GET_HSER_NAME = (params, hideloading) => $post('api', params, hideloading)
 ```
 
 #### 如何调用
 
 ```javascript
 // 请求接口
-import { getUserInfo } from '@/api/user.js'
+// import { getUserInfo } from '@/api/user.js'
+import { GET_HSER_NAME } from '@/api'
 
-const params = { user: 'sunnie' }
-getUserInfo(params)
-  .then(() => {})
-  .catch(() => {})
+// const params = { user: 'sunnie' }
+// getUserInfo(params)
+//   .then(() => {})
+//   .catch(() => {})
+let params = {
+  user: 'sunnie'
+}
+GET_HSER_NAME(params, ture)
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.err(err)
+  })
 ```
 
 [▲ 回顶部](#top)

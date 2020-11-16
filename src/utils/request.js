@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '@/store'
+// import qs from 'qs'
 import { Toast } from 'vant'
 // 根据环境不同引入不同api地址
 import { baseApi } from '@/config'
@@ -54,5 +55,44 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+/** ************************** api封装 ************************** */
+/**
+ *
+ * @param {string} url 路径
+ * @param {object} params 参数
+ * @param {boolean} hideloading 默认为 false不传就是显示hideloading效果，true为不显示hideloading效果
+ *
+ */
+export const $get = (url, params, hideloading) => service({ url, method: 'get', params, hideloading })
+
+export const $post = (url, data, params, hideloading) => service({ url, method: 'post', params, data, hideloading })
+
+// export const $put = (url, data, params) => service({ url, method: 'put', params, data })
+
+// export const $delete = (url, params) => service({ url, method: 'delete', params })
+
+// export const $upload = (url, data, params) =>
+//   service({
+//     url,
+//     method: 'post',
+//     headers: { 'Content-Type': 'multipart/form-data' },
+//     params,
+//     data
+//   })
+
+// export const $simpleGet = (url, params) => service({ url, method: 'get', params, withCredentials: false })
+
+// export const generateURL = (url, params) => {
+//   let fullURL = ''
+//   const query = qs.stringify(params, { addQueryPrefix: true, skipNulls: true })
+//   if (/^(https?:)?\/\/\w+/.test(url)) {
+//     fullURL = url + query
+//   } else {
+//     fullURL = config.url + url + query
+//   }
+//   return fullURL
+// }
+
+// export const $download = (url, params) => FileSaver.saveAs(generateURL(url, params))
 
 export default service
