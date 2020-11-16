@@ -28,7 +28,7 @@
 // 请求接口
 // import { getUserInfo } from '@/api/user.js'
 // import { GET_HSER_NAME } from '@/api'
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
