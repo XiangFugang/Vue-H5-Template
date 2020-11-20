@@ -3,7 +3,7 @@
   <div class="index-container">
     <div class="warpper">
       <h1 class="demo-home__title"><img src="https://imgs.solui.cn/weapp/logo.png" /><span> VUE H5开发模板</span></h1>
-      <h2 class="demo-home__desc">
+      <h2 class="demo-home__desc" @click="aaaa">
         A vue h5 template with Vant UI
       </h2>
     </div>
@@ -41,7 +41,11 @@ export default {
 
   mounted() { },
 
-  methods: {}
+  methods: {
+    aaaa() {
+      this.$router.push('user')
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

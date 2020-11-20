@@ -1,6 +1,6 @@
-# vue-h5-template
+# 没找信息科技
 
-### Node 版本要求
+## Node 版本要求
 
 `Vue CLI` 需要 Node.js 8.9 或更高版本 (推荐 8.11.0+)。你可以使用 [nvm](https://github.com/nvm-sh/nvm) 或
 [nvm-windows](https://github.com/coreybutler/nvm-windows) 在同一台电脑中管理多个 Node 版本。
@@ -39,11 +39,11 @@ npm run build
 - [√ 配置 alias 别名](#alias)
 - [√ 配置 proxy 跨域](#proxy)
 - [√ 配置 打包分析](#bundle)
-- [√ 配置 externals 引入 cdn 资源 ](#externals)
-- [√ 去掉 console.log ](#console)
+- [√ 配置 externals 引入 cdn 资源](#externals)
+- [√ 去掉 console.log](#console)
 - [√ splitChunks 单独打包第三方模块](#chunks)
-- [√ 添加 IE 兼容 ](#ie)
-- [√ Eslint+Pettier 统一开发规范 ](#pettier)
+- [√ 添加 IE 兼容](#ie)
+- [√ Eslint+Pettier 统一开发规范](#pettier)
 
 ### <span id="env">✅ 配置多环境变量 </span>
 
@@ -61,7 +61,7 @@ npm run build
 }
 ```
 
-##### 配置介绍
+#### 配置介绍
 
 &emsp;&emsp;以 `VUE_APP_` 开头的变量，在代码中可以通过 `process.env.VUE_APP_` 访问。  
 &emsp;&emsp;比如,`VUE_APP_ENV = 'development'` 通过`process.env.VUE_APP_ENV` 访问。  
@@ -140,7 +140,7 @@ Vant 中的样式默认使用`px`作为单位，如果需要使用`rem`单位，
 - [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem) 是一款 `postcss` 插件，用于将单位转化为 `rem`
 - [lib-flexible](https://github.com/amfe/lib-flexible) 用于设置 `rem` 基准值
 
-##### PostCSS 配置
+#### PostCSS 配置
 
 下面提供了一份基本的 `postcss` 配置，可以在此配置的基础上根据项目需求进行修改
 
@@ -161,7 +161,7 @@ module.exports = {
 
 更多详细信息： [vant](https://youzan.github.io/vant/#/zh-CN/quickstart#jin-jie-yong-fa)
 
-**新手必看，老鸟跳过**
+<!-- 新手必看，老鸟跳过 -->
 
 很多小伙伴会问我，适配的问题,因为我们使用的是 Vant UI，所以必须根据 Vant UI 375 的设计规范走，一般我们的设计会将 UI 图上
 传到蓝湖，我们就可以需要的尺寸了。下面就大搞普及一下 rem。
@@ -590,36 +590,51 @@ export default service
 - `hideloading` 默认 `false`,设置为 `true` 后，不显示 loading ui 交互中有些接口不需要让用户感知
 
 ```javascript
-// 在src下的api文件夹的index.js文件夹中引入
+// 在src下的api文件夹的index.js文件中引入
 export * from './user'
-// import qs from 'qs'
-// axios
-import { $post } from '@/utils/request'
-//user api
 
-// 用户信息
-// export function getUserInfo(params) {
-//   return request({
-//     url: '/user/userinfo',
-//     method: 'post',
-//     data: qs.stringify(params),
-//     hideloading: true // 隐藏 loading 组件
-//   })
-// }
+// 在api下的user.js文件中引入
+import { $post } from '@/utils/request'
+
+// 统一接口封装模式，方便统一管理
 export const GET_HSER_NAME = (params, hideloading) => $post('api', params, hideloading)
+
+/**
+ * import qs from 'qs'
+ * axios
+ * user api
+ *
+ * 用户信息
+ *
+ * export function getUserInfo(params) {
+ * return request({
+ *  url: '/user/userinfo',
+ *  method: 'post',
+ *  data: qs.stringify(params),
+ *  hideloading: true // 隐藏 loading 组件
+ *  })
+ * }
+ * */
 ```
 
 #### 如何调用
 
 ```javascript
-// 请求接口
-// import { getUserInfo } from '@/api/user.js'
+/**
+ * 请求接口
+ *
+ * import { getUserInfo } from '@/api/user.js'
+ * const params = { user: 'sunnie' }
+ * getUserInfo(params).then(res => {
+ * console.log(res)
+ * }).catch(err => {
+ * console.err(err)
+ * })
+ */
+// 请求接口，在使用的页面引入
 import { GET_HSER_NAME } from '@/api'
 
-// const params = { user: 'sunnie' }
-// getUserInfo(params)
-//   .then(() => {})
-//   .catch(() => {})
+//在方法中调用
 let params = {
   user: 'sunnie'
 }
@@ -1132,25 +1147,6 @@ Vscode setting.json 设置
 
 [▲ 回顶部](#top)
 
-# 鸣谢 ​
-
-[vue-cli4-config](https://github.com/staven630/vue-cli4-config)  
-[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-
-# 关于我
+#### 转载至
 
 获取更多技术相关文章，关注公众号”前端女塾“。
-
-回复加群，即可加入”前端仙女群“
-
- <p>
-  <img src="./static/gognzhonghao.jpg" width="256" style="display:inline;">
-</p>
-
-扫描添加下方的微信并备注 Sol 加交流群，交流学习，及时获取代码最新动态。
-
-<p>
-  <img src="./static/me.png" width="256" style="display:inline;">
-</p>
- 
-如果对你有帮助送我一颗小星星（づ￣3￣）づ╭❤～
