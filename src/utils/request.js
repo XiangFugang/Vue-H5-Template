@@ -1,12 +1,14 @@
 import axios from 'axios'
 import store from '@/store'
-// import dsbridge from 'dsbridge'
 // import qs from 'qs'
 import { Toast } from 'vant'
 // 根据环境不同引入不同api地址
 import { baseApi } from '@/config'
+
+// 更新获取用户信息
+store.dispatch('SIGN_IN')
+
 // create an axios instance
-// const dsBridge = require('dsbridge')
 const service = axios.create({
   baseURL: baseApi, // url = base api url + request url
   withCredentials: true, // send cookies when cross-domain requests
@@ -23,9 +25,8 @@ service.interceptors.request.use(
         forbidClick: true
       })
     }
-    if (store.getters.token) {
-      config.headers['X-Token'] = store.getters.token
-    }
+    // 设置token
+    config.headers.Authorization = store.getters.token ? 'Bearer ' + store.getters.token : ''
     return config
   },
   error => {
@@ -38,18 +39,33 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     Toast.clear()
-    const res = response.data
-    if (res.status && res.status !== 200) {
-      // 登录超时,重新登录
-      if (res.status === 401) {
-        store.dispatch('FedLogOut').then(() => {
-          location.reload()
-        })
+    if (response.status === 200) {
+      if (response.data.code === '0') {
+        return response.data
+      } else if (response.data.code === '-1') {
+        Toast(response.data.msg)
+      } else {
+        Toast('系统错误请刷新页面！')
       }
-      return Promise.reject(res || 'error')
+    } else if (response.status === 250) {
+      Toast('token失效')
+      // 更新用户信息重新获取token
+      store.dispatch('SIGN_IN')
     } else {
-      return Promise.resolve(res)
+      console.log(response.status)
     }
+    // const res = response.data
+    // if (res.status && res.status !== 200) {
+    //   // 登录超时,重新登录
+    //   if (res.status === 401) {
+    //     store.dispatch('FedLogOut').then(() => {
+    //       location.reload()
+    //     })
+    //   }
+    //   return Promise.reject(res || 'error')
+    // } else {
+    //   return Promise.resolve(res)
+    // }
   },
   error => {
     Toast.clear()
