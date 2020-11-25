@@ -1,10 +1,12 @@
 import axios from 'axios'
 import store from '@/store'
+// import dsbridge from 'dsbridge'
 // import qs from 'qs'
 import { Toast } from 'vant'
 // 根据环境不同引入不同api地址
 import { baseApi } from '@/config'
 // create an axios instance
+// const dsBridge = require('dsbridge')
 const service = axios.create({
   baseURL: baseApi, // url = base api url + request url
   withCredentials: true, // send cookies when cross-domain requests
@@ -14,15 +16,15 @@ const service = axios.create({
 // request拦截器 request interceptor
 service.interceptors.request.use(
   config => {
-    // 不传递默认开启loading
-    if (!config.hideloading) {
+    // 传递开启loading,不传不开启
+    if (config.hideloading) {
       // loading
       Toast.loading({
         forbidClick: true
       })
     }
     if (store.getters.token) {
-      config.headers['X-Token'] = ''
+      config.headers['X-Token'] = store.getters.token
     }
     return config
   },

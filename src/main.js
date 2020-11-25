@@ -7,7 +7,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+import Bridge from '@/utils/bridge.js'
+Vue.prototype.$bridge = Bridge
 // 设置 js中可以访问 $cdn
 import { $cdn } from '@/config'
 Vue.prototype.$cdn = $cdn
