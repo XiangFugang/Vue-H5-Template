@@ -5,22 +5,27 @@
 export const constantRouterMap = [
   // 城市店铺管理首页
   {
-    path: '/shopHomepage',
+    path: '/',
     name: 'shopHomepage',
     component: () => import(/* webpackChunkName: "shopHomepage" */ '../views/ShopHomepage/index.vue')
   },
   {
-    path: '/404',
-    name: 'error',
-    meta: {
-      title: '404'
-    },
-    component: () => import(/* webpackChunkName: 'error' */ '../views/Error.vue')
-  },
-  {
-    path: '*', // 此处需特别注意置于最底部
-    redirect: '/404'
+    path: '/test',
+    name: 'test',
+    component: () => import('@/views/Test/index.vue')
   }
+  // {
+  //   path: '/404',
+  //   name: 'error',
+  //   meta: {
+  //     title: '404'
+  //   },
+  //   component: () => import(/* webpackChunkName: 'error' */ '../views/Error.vue')
+  // },
+  // {
+  //   path: '*', // 此处需特别注意置于最底部
+  //   redirect: '/404'
+  // }
   // {
   // path: '/',
   // component: () => import('@/views/layouts/index'),

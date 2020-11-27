@@ -4,7 +4,7 @@
     <div class="ShopHomepage-haed">
       <div class="haed-content">
         <div class="icon">
-          <img src="../../assets/img/shop/notice.png" />
+          <img src="../../assets/imges/shop/notice.png" />
         </div>
         <div class="text">
           <div class="characters">{{ loopList[time].text }}</div>
@@ -13,11 +13,11 @@
     </div>
     <div class="log-text">
       <div class="icon">
-        <img src="../../assets/img/shop/marshalling.png" />
+        <img src="../../assets/imges/shop/marshalling.png" />
       </div>
       <div class="text">入驻优势</div>
       <div class="icon">
-        <img src="../../assets/img/shop/marshalling.png" />
+        <img src="../../assets/imges/shop/marshalling.png" />
       </div>
     </div>
     <div class="text-explain">尊享门店专属权益，打造没找明星店铺</div>
@@ -65,22 +65,22 @@ export default {
     list() {
       const array = [
         {
-          icon: require('../../assets/img/shop/exposure.png'),
+          icon: require('../../assets/imges/shop/exposure.png'),
           name: '精准曝光',
           explain: '根据门店地址精准触达目标人群'
         },
         {
-          icon: require('../../assets/img/shop/drainage.png'),
+          icon: require('../../assets/imges/shop/drainage.png'),
           name: '店铺引流',
           explain: '没找百万用户为门店带来巨大流量'
         },
         {
-          icon: require('../../assets/img/shop/Telephone.png'),
+          icon: require('../../assets/imges/shop/Telephone.png'),
           name: '联系电话',
           explain: '展示联系方式生意直接触达'
         },
         {
-          icon: require('../../assets/img/shop/expect.png'),
+          icon: require('../../assets/imges/shop/expect.png'),
           name: '敬请期待',
           explain: '更多权益正在路上'
         }
@@ -167,7 +167,7 @@ export default {
   .ShopHomepage-haed {
     width: 100%;
     height: 120px;
-    background: url(../../assets/img/shop/banner.png) no-repeat;
+    background: url(../../assets/imges/shop/banner.png) no-repeat;
     background-size: cover;
     .haed-content {
       display: flex;
