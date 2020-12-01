@@ -1,17 +1,13 @@
-<!--aaaa-->
+<!--name-->
 <template>
-  <div class="aaaa">
-    <meizhaoVant
-    @clickLeft="clickLeft"
-    ></meizhaoVant>
-  </div>
+  <div class="name"></div>
 </template>
 
 <script>
-import meizhaoVant from 'components/meizhao-vant/meizhao-navbar/index'
+
 export default {
 
-  components: { meizhaoVant },
+  components: {},
 
   props: {},
 
@@ -24,11 +20,7 @@ export default {
   computed: {},
   // 监控data中的数据变化
   watch: {},
-  methods: {
-    clickLeft() {
-      this.$router.go(-1)
-    }
-  },
+  methods: {},
   // 生命周期-创建之前
   beforeCreate() { },
   // 生命周期-创建完成（可以访问当前this实例）

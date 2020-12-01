@@ -7,38 +7,15 @@
       @clickLeft="clickLeft"
       @clickRight="clickRight"
     ></meizhaoVant>
-    <meizhaoPullrefresh>
-      <template v-slot:pulling>
-        <img
-          class="doge"
-          src="https://img.yzcdn.cn/vant/doge.png"
-          :style="{ transform: `scale(${props.distance / 80})` }"
-        />
-      </template>
-      <template v-slot:loosing>
-        <img
-          class="doge"
-          src="https://img.yzcdn.cn/vant/doge.png"
-        />
-      </template>
-      <template v-slot:loading>
-        <img
-          class="doge"
-          src="https://img.yzcdn.cn/vant/doge-fire.jpg"
-        />
-      </template>
-    </meizhaoPullrefresh>
   </div>
 </template>
 
 <script>
 import meizhaoVant from 'components/meizhao-vant/meizhao-navbar/index'
-import meizhaoPullrefresh from 'components/meizhao-vant/meizhao-PullRefresh/index'
 export default {
 
   components: {
-    meizhaoVant,
-    meizhaoPullrefresh
+    meizhaoVant
   },
 
   props: {},

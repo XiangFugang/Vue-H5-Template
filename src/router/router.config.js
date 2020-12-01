@@ -7,7 +7,10 @@ export const constantRouterMap = [
   {
     path: '/',
     name: 'shopHomepage',
-    component: () => import(/* webpackChunkName: "shopHomepage" */ '../views/ShopHomepage/index.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "shopHomepage" */ '../views/ShopHomepage/index.vue'
+      )
   },
   {
     path: '/test',
@@ -15,9 +18,12 @@ export const constantRouterMap = [
     component: () => import('@/views/Test/index.vue')
   },
   {
-    path: '/aaaa',
-    name: 'aaaa',
-    component: () => import('@/views/aaaa/index.vue')
+    path: '/chat',
+    name: 'chat',
+    component: () => import('@/views/chat/index.vue'),
+    meta: {
+      title: '消息聊天'
+    }
   }
   // {
   //   path: '/404',
