@@ -13,6 +13,11 @@ export const constantRouterMap = [
     path: '/test',
     name: 'test',
     component: () => import('@/views/Test/index.vue')
+  },
+  {
+    path: '/aaaa',
+    name: 'aaaa',
+    component: () => import('@/views/aaaa/index.vue')
   }
   // {
   //   path: '/404',

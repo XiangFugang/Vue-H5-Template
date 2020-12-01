@@ -1,16 +1,45 @@
 <!--测试-->
 <template>
   <div class="Test">
-    <!-- <div class="shell"></div> -->
-    <meizhaoVant @clickLeft="clickLeft" @clickRight="clickRight" :meizhaoVanbar="meizhaoVanbar"></meizhaoVant>
+    <meizhaoVant
+      class="Test-vanbar"
+      :meizhaoVanbar="meizhaoVanbar"
+      @clickLeft="clickLeft"
+      @clickRight="clickRight"
+    ></meizhaoVant>
+    <meizhaoPullrefresh>
+      <template v-slot:pulling>
+        <img
+          class="doge"
+          src="https://img.yzcdn.cn/vant/doge.png"
+          :style="{ transform: `scale(${props.distance / 80})` }"
+        />
+      </template>
+      <template v-slot:loosing>
+        <img
+          class="doge"
+          src="https://img.yzcdn.cn/vant/doge.png"
+        />
+      </template>
+      <template v-slot:loading>
+        <img
+          class="doge"
+          src="https://img.yzcdn.cn/vant/doge-fire.jpg"
+        />
+      </template>
+    </meizhaoPullrefresh>
   </div>
 </template>
 
 <script>
 import meizhaoVant from 'components/meizhao-vant/meizhao-navbar/index'
+import meizhaoPullrefresh from 'components/meizhao-vant/meizhao-PullRefresh/index'
 export default {
 
-  components: { meizhaoVant },
+  components: {
+    meizhaoVant,
+    meizhaoPullrefresh
+  },
 
   props: {},
 
@@ -24,13 +53,14 @@ export default {
     meizhaoVanbar() {
       const aaa = {
         title: '没找',
-        // leftText: '返回',
-        // rightText: '前进',
-        leftArrow: true,
-        RIGHT: true,
-        rightName: 'search',
-        leftImg: true,
-        leftimg: require('../../assets/imges/shop/banner.png')
+        arrow: true,
+        leftText: '返回',
+        rightText: '前进',
+        fixed: true,
+        placeholder: true,
+        safeAreaInsetTop: true,
+        border: false
+        // leftimg: require('../../assets/imges/shop/banner.png')
       }
       return aaa
     }
@@ -39,10 +69,11 @@ export default {
   watch: {},
   methods: {
     clickLeft() {
-      console.log(1)
+      console.log(1111)
+      // this.$router.go(-1)
     },
     clickRight() {
-      console.log(2)
+      this.$router.push('aaaa')
     }
   },
   // 生命周期-创建之前
@@ -65,6 +96,31 @@ export default {
   activated() { }
 }
 </script>
+<style lang="scss">
+.Test-vanbar {
+  height: 50px;
+  background: #999;
+  .van-nav-bar {
+    height: 50px;
+  }
+  //   .van-nav-bar__left {
+  //     .van-nav-bar__text {
+  //       color: #fff;
+  //     }
+  //     .van-icon {
+  //       color: #fff;
+  //     }
+  //   }
+  //   .van-nav-bar__title {
+  //     color: #fff;
+  //   }
+  //   .van-nav-bar__right {
+  //     .van-nav-bar__text {
+  //       color: #fff;
+  //     }
+  //   }
+}
+</style>
 <style scoped lang='scss'>
 // .Test {
 //   min-height: 100vh;
